@@ -12,8 +12,7 @@ import TheWelcome from './components/TheWelcome.vue'
 
   <main>
     <!-- <TheWelcome /> -->
-     <!-- <p>test</p> -->
-     <RouterView/>
+     <router-view />
   </main>
 </template>
 

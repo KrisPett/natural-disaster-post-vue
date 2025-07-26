@@ -6,6 +6,7 @@ const router = useRouter()
 function goToHome(): void {
   router.push('/')
 }
+
 </script>
 
 <template>

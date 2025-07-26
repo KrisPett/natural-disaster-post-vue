@@ -1,20 +1,71 @@
-import { createWebHistory, createRouter } from 'vue-router'
+import { createWebHistory, createRouter } from "vue-router";
 
-import HomeView from '@/views/HomeView.vue'
-import AboutView from '@/views/AboutView.vue'
-import ContactTheNewsroomView from '@/views/ContactTheNewsroomView.vue'
-import NewsView from '@/views/NewsView.vue'
+import HomeView from "@/views/HomeView.vue";
+import AboutView from "@/views/AboutView.vue";
+import ContactTheNewsroomView from "@/views/ContactTheNewsroomView.vue";
+import NewsView from "@/views/NewsView.vue";
+
+declare module "vue-router" {
+  interface RouteMeta {
+    title?: string;
+    description?: string;
+  }
+}
 
 const routes = [
-  { path: '/', component: HomeView },
-  { path: '/about', component: AboutView },
-  { path: '/contact_the_newsroom', component: ContactTheNewsroomView },
-  { path: '/news', component: NewsView },
-]
+  {
+    path: "/",
+    name: "Home",
+    component: HomeView,
+    meta: {
+      title: "The Natural Disaster Post",
+      description: "Welcome to our news website",
+    },
+  },
+  {
+    path: "/about",
+    name: "About",
+    component: AboutView,
+    meta: {
+      title: "About Us - Natural Disaster Post",
+      description: "Learn more about our mission and team",
+    },
+  },
+  {
+    path: "/contact_the_newsroom",
+    name: "ContactNewsroom",
+    component: ContactTheNewsroomView,
+    meta: {
+      title: "Contact the Newsroom - Natural Disaster Post",
+      description: "Get in touch with our editorial team",
+    },
+  },
+  {
+    path: "/news",
+    name: "News",
+    component: NewsView,
+    meta: {
+      title: "Latest News - Natural Disaster Post",
+      description: "Read our latest news articles",
+    },
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "NotFound",
+    component: () => import("@/views/NotFoundView.vue"),
+    meta: {
+      title: "Page Not Found - Natural Disaster Post",
+    },
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-})
+});
 
-export default router
+router.afterEach((to) => {
+  document.title = to.meta.title || "Natural Disaster Post";
+});
+
+export default router;
