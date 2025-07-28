@@ -1,11 +1,23 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import { useHomeViewStore } from '@/stores/HomeView'
+import { onMounted, watch } from 'vue'
 
 const router = useRouter()
+const homeViewStore = useHomeViewStore()
 
 function goToAbout(): void {
   router.push('/about')
 }
+
+onMounted(() => {
+  homeViewStore.fetchHomePageData()
+})
+
+watch(() => homeViewStore.homePageData, (newData) => {
+  console.log(newData);
+})
+
 </script>
 
 <template>

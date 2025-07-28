@@ -3,7 +3,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
 import AboutView from "@/views/AboutView.vue";
 import ContactTheNewsroomView from "@/views/ContactTheNewsroomView.vue";
-import NewsView from "@/views/NewsView.vue";
+import NewsView from "@/views/NewsItemView.vue";
 
 declare module "vue-router" {
   interface RouteMeta {
