@@ -66,6 +66,15 @@ const router = createRouter({
 
 router.afterEach((to) => {
   document.title = to.meta.title || "Natural Disaster Post";
+  if (to.meta.description) {
+    let meta = document.querySelector('meta[name="description"]');
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.setAttribute("name", "description");
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute("content", to.meta.description);
+  }
 });
 
 export default router;
