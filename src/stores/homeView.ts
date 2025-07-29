@@ -7,19 +7,21 @@ interface NewsItemDTO {
   imageSrc: string;
 }
 
-interface HomePageDTO {
+interface HomeViewDTO {
   newsItems: NewsItemDTO[];
 }
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export const useHomeViewStore = defineStore("homeView", {
   state: () => ({
-    homePageData: null as HomePageDTO | null,
+    homePageData: null as HomeViewDTO | null,
     isLoading: false,
     error: null as string | null,
   }),
 
   getters: {
-    getData: (state) => state.homePageData,
+    getNewsItems: (state) => state.homePageData?.newsItems || [],
   },
 
   actions: {
@@ -27,7 +29,7 @@ export const useHomeViewStore = defineStore("homeView", {
       this.isLoading = true;
       this.error = null;
 
-      return fetch("http://localhost:8080/home-page", {
+      return fetch(`${API_BASE_URL}/home-page`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +41,7 @@ export const useHomeViewStore = defineStore("homeView", {
           }
           return response.json();
         })
-        .then((data: HomePageDTO) => {
+        .then((data: HomeViewDTO) => {
           this.homePageData = data;
           return data;
         })
@@ -51,19 +53,6 @@ export const useHomeViewStore = defineStore("homeView", {
         .finally(() => {
           this.isLoading = false;
         });
-    },
-
-    async refreshData() {
-      await this.fetchHomePageData();
-    },
-
-    clearData() {
-      this.homePageData = null;
-      this.error = null;
-    },
-
-    clearError() {
-      this.error = null;
     },
   },
 });
