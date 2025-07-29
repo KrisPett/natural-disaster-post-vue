@@ -19,19 +19,7 @@ export const useHomeViewStore = defineStore("homeView", {
   }),
 
   getters: {
-    newsItems: (state) => state.homePageData?.newsItems ?? [],
-
-    featuredItems: (state) => state.homePageData?.newsItems.slice(0, 3) ?? [],
-
-    recentItems: (state) => state.homePageData?.newsItems.slice(0, 5) ?? [],
-
-    getNewsItemById:
-      (state) =>
-      (id: string): NewsItemDTO | undefined => {
-        return state.homePageData?.newsItems.find((item) => item.id === id);
-      },
-
-    hasData: (state) => state.homePageData !== null && state.homePageData.newsItems.length > 0,
+    getData: (state) => state.homePageData,
   },
 
   actions: {

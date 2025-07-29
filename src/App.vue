@@ -1,46 +1,18 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
 </script>
 
 <template>
-  <!-- <header>
-    <div class="wrapper">
-      <HelloWorld msg="Header" />
+  <div style="min-height: 100vh" class="flex flex-col border-2">
+    <Header />
+    <main class="flex-1">
+      <div class="max-w-screen-xl mx-auto px-4">
+        <router-view />
+      </div>
+    </main>
+    <div class="max-w-screen-xl w-full mx-auto px-4">
+      <Footer />
     </div>
-  </header> -->
-
-  <main>
-    <!-- <TheWelcome /> -->
-     <router-view />
-  </main>
+  </div>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
