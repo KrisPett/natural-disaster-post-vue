@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { useHomeViewStore } from '@/stores/HomeView'
+import { useHomeViewStore } from '@/stores/homeView'
 import { onMounted } from 'vue'
 import LoadingSpinner from '@/components/LoadingSpinner.vue'
-import NewsCard from '@/components/home-page/NewsCard.vue'
+import NewsCard from '@/components/home-view/NewsCard.vue'
 
 const router = useRouter()
 const homeViewStore = useHomeViewStore()

@@ -7,7 +7,6 @@
 </template>
 
 <script setup lang="ts">
-// No additional logic needed for this simple view
 </script>
 
 <style scoped>
@@ -15,11 +14,13 @@
   text-align: center;
   margin-top: 80px;
 }
+
 .not-found h1 {
   font-size: 2.5rem;
   color: #e74c3c;
   margin-bottom: 16px;
 }
+
 .not-found p {
   margin-bottom: 24px;
   color: #555;
