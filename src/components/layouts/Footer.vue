@@ -13,7 +13,7 @@
         </div>
         <div>
           <h3 class="font-semibold mb-2">Contact Us</h3>
-          <a href="/contact-the-newsroom" class="block text-muted-foreground hover:text-foreground">
+          <a href="/contact_the_newsroom" class="block text-muted-foreground hover:text-foreground">
             Contact the Newsroom
           </a>
         </div>
